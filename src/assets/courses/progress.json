@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Beginner Spanish",
+        "progress": 75,
+        "completedLessons": 15,
+        "totalLessons": 20,
+        "completedQuizzes": 3,
+        "totalQuizzes": 4
+    },
+    {
+        "id": 2,
+        "title": "Intermediate French",
+        "progress": 50,
+        "completedLessons": 10,
+        "totalLessons": 20,
+        "completedQuizzes": 2,
+        "totalQuizzes": 4
+    },
+    {
+        "id": 3,
+        "title": "Advanced German",
+        "progress": 30,
+        "completedLessons": 6,
+        "totalLessons": 20,
+        "completedQuizzes": 1,
+        "totalQuizzes": 4
+    }
+]

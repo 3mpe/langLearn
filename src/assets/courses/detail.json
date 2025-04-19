@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "title": "Beginner Spanish",
+        "description": "Learn the basics of Spanish language and culture.",
+        "instructor": "John Doe",
+        "content": [
+            "Introduction to Spanish",
+            "Basic Grammar",
+            "Common Phrases"
+        ],
+        "duration": "3 hours",
+        "difficulty": "Beginner"
+    },
+    {
+        "id": 2,
+        "title": "Intermediate French",
+        "description": "Enhance your French speaking and writing skills.",
+        "instructor": "Jane Smith",
+        "content": [
+            "Intermediate Grammar",
+            "Writing Skills",
+            "Speaking Practice"
+        ],
+        "duration": "4 hours",
+        "difficulty": "Intermediate"
+    },
+    {
+        "id": 3,
+        "title": "Advanced German",
+        "description": "Master the German language with advanced lessons.",
+        "instructor": "Alice Johnson",
+        "content": [
+            "Advanced Grammar",
+            "Literature",
+            "Fluency Practice"
+        ],
+        "duration": "5 hours",
+        "difficulty": "Advanced"
+    }
+]

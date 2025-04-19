@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-list',
@@ -8,28 +9,16 @@ import { Router } from '@angular/router';
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
-  courses = [
-    {
-      id: 1,
-      title: 'Beginner Spanish',
-      description: 'Learn the basics of Spanish language and culture.',
-      instructor: 'John Doe',
-    },
-    {
-      id: 2,
-      title: 'Intermediate French',
-      description: 'Enhance your French speaking and writing skills.',
-      instructor: 'Jane Smith',
-    },
-    {
-      id: 3,
-      title: 'Advanced German',
-      description: 'Master the German language with advanced lessons.',
-      instructor: 'Alice Johnson',
-    },
-  ];
+  courses: Array<any> = [];
+  errorMessage: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private coursesService: CoursesService) {}
+
+  ngOnInit() {
+    this.coursesService.getCourses().subscribe((resp: any) => {
+      this.courses = resp;
+    });
+  }
 
   viewCourse(courseId: number) {
     this.router.navigate(['/courses/detail', courseId]);
