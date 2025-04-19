@@ -1,0 +1,24 @@
+<div
+  class="header-container bg-light py-3 px-4 d-flex align-items-center justify-content-between"
+>
+  <div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <a routerLink="/">Home</a>
+        </li>
+        <li
+          class="breadcrumb-item"
+          *ngFor="let crumb of breadcrumbs; let last = last"
+          [ngClass]="{ active: last }"
+        >
+          <a *ngIf="!last" [routerLink]="crumb.url">{{ crumb.label }}</a>
+          <span *ngIf="last">{{ crumb.label }}</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <button class="btn btn-secondary" *ngIf="showBackButton" (click)="goBack()">
+    Back
+  </button>
+</div>

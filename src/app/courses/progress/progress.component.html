@@ -1,0 +1,53 @@
+<app-header
+  [breadcrumbs]="[
+    { label: 'Courses', url: '/courses/list' },
+    { label: course?.title, url: '' }
+  ]"
+  [showBackButton]="true"
+></app-header>
+
+<div class="container mt-4">
+  <h2 class="text-center mb-4">My Enrolled Courses</h2>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Course Title</th>
+        <th>Progress</th>
+        <th>Completed Lessons</th>
+        <th>Completed Quizzes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of enrolledCourses; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ course.title }}</td>
+        <td>
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              [style.width.%]="course.progress"
+              [attr.aria-valuenow]="course.progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {{ course.progress }}%
+            </div>
+          </div>
+        </td>
+        <td>{{ course.completedLessons }} / {{ course.totalLessons }}</td>
+        <td>{{ course.completedQuizzes }} / {{ course.totalQuizzes }}</td>
+        <td>
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="viewCourse(course.id)"
+          >
+            View Course
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,82 @@
+<div
+  class="container d-flex align-items-center justify-content-center min-vh-100"
+>
+  <div class="card w-100" style="max-width: 400px">
+    <div class="card-body">
+      <h5 class="card-title text-center">Register</h5>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="credentials.email"
+            name="email"
+            required
+            email
+            class="form-control"
+            #email="ngModel"
+          />
+          <div *ngIf="email.invalid && email.touched" class="text-danger">
+            <small *ngIf="email.errors?.['required']">Email is required.</small>
+            <small *ngIf="email.errors?.['email']">Invalid email format.</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="credentials.password"
+            name="password"
+            required
+            minlength="6"
+            class="form-control"
+            #password="ngModel"
+          />
+          <div *ngIf="password.invalid && password.touched" class="text-danger">
+            <small *ngIf="password.errors?.['required']">Password is required.</small>
+            <small *ngIf="password.errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            [(ngModel)]="credentials.confirmPassword"
+            name="confirmPassword"
+            required
+            class="form-control"
+            #confirmPassword="ngModel"
+          />
+          <div
+            *ngIf="confirmPassword.invalid && confirmPassword.touched"
+            class="text-danger"
+          >
+            <small *ngIf="confirmPassword.errors?.['required']">
+              Confirm Password is required.
+            </small>
+          </div>
+          <div *ngIf="credentials.password !== credentials.confirmPassword && confirmPassword.touched" class="text-danger">
+            <small>Passwords do not match.</small>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="registerForm.invalid || credentials.password !== credentials.confirmPassword"
+        >
+          Register
+        </button>
+      </form>
+      <p *ngIf="registerError" class="text-danger text-center">{{ registerError }}</p>
+      <p class="text-center mt-3">
+        Already have an account?
+        <a routerLink="/auth/login" class="text-primary">Login</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<app-header
+  [breadcrumbs]="[
+    { label: 'Courses', url: '/courses/list' },
+    { label: course?.title, url: '' }
+  ]"
+  [showBackButton]="true"
+></app-header>
+
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ course?.title }}</h2>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Description</h5>
+      <p class="card-text">{{ course?.description }}</p>
+
+      <h5 class="card-title">Instructor</h5>
+      <p class="card-text">{{ course?.instructor }}</p>
+
+      <h5 class="card-title">Content</h5>
+      <ul>
+        <li *ngFor="let content of course?.content">{{ content }}</li>
+      </ul>
+
+      <h5 class="card-title">Duration</h5>
+      <p class="card-text">{{ course?.duration }}</p>
+
+      <h5 class="card-title">Difficulty Level</h5>
+      <p class="card-text">{{ course?.difficulty }}</p>
+
+      <button class="btn btn-success me-2" (click)="enroll()">
+        Enroll in this Course
+      </button>
+    </div>
+  </div>
+</div>
