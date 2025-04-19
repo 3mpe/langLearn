@@ -20,7 +20,7 @@ export class LoginComponent {
         this.loginError = null;
         if (response.success) {
           localStorage.setItem('token', response.token);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/courses']);
         } else {
           this.loginError = 'Invalid credentials';
         }
