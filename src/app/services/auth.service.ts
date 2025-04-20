@@ -13,13 +13,14 @@ export class AuthService {
   ) {}
 
   login(email: string, password: string): Observable<any> {
-    if (email === 'vatanseveremre90@gmail.com' && password === '123456')
-      return this.apiService.get<any>('auth/login.json');
-    else return this.apiService.get<any>('auth/loginError.json');
+    return this.apiService.post<any>('auth/login', {
+      password,
+      email,
+    });
   }
 
   register(data: any): Observable<any> {
-    return this.apiService.get<any>('auth/register.json');
+    return this.apiService.post<any>('auth/register', data);
   }
 
   isLoggedIn(): boolean {

@@ -19,18 +19,27 @@ export class DetailComponent {
   ) {}
 
   ngOnInit(): void {
-    const courseId = Number(this.route.snapshot.paramMap.get('id'));
-    this.coursesService.getCoursesDetail().subscribe((resp: any) => {
-      this.courses = resp;
-      this.course = resp.find((c: any) => c.id === courseId);
+    const courseId = this.route.snapshot.paramMap.get('id');
+    this.coursesService.getCoursesDetail(courseId).subscribe((resp: any) => {
+      this.course = resp;
+      const userId = localStorage.getItem('userId') || null;
+      
+      this.coursesService
+        .isEnrolled(this.course.id, userId)
+        .subscribe((response: any) => {
+          this.course.isEnrolled = response.isEnrolled;
+        });
+
     });
   }
 
   enroll() {
+    const userId = localStorage.getItem('userId') || null;
+
     this.coursesService
-      .enrollInCourse(this.course.id)
+      .enrollInCourse(this.course.id, userId)
       .subscribe((response: any) => {
-        alert(`You have successfully enrolled in ${this.course.title}!`);
+        alert(response.message);
         this.router.navigate(['/courses']);
       });
   }

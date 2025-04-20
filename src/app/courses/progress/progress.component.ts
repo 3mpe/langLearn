@@ -18,8 +18,9 @@ export class ProgressComponent {
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    const courseId = Number(this.route.snapshot.paramMap.get('id'));
-    this.coursesService.getProgress(courseId).subscribe((resp) => {
+    const userId = localStorage.getItem('userId') || '';
+    const courseId = this.route.snapshot.paramMap.get('id');
+    this.coursesService.getProgress(courseId, userId).subscribe((resp) => {
       this.enrolledCourses = resp;
       this.course = resp.find((c: any) => c.id === courseId);
     });

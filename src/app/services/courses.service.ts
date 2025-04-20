@@ -9,15 +9,18 @@ export class CoursesService {
   constructor(private apiService: ApiService) {}
 
   getCourses(): Observable<any> {
-    return this.apiService.get('courses/list.json');
+    return this.apiService.get('courses/');
   }
-  getCoursesDetail(): Observable<any> {
-    return this.apiService.get('courses/detail.json');
+  getCoursesDetail(courseId: any): Observable<any> {
+    return this.apiService.post(`courses/${courseId}`, {});
   }
-  enrollInCourse(courseId: number): Observable<any> {
-    return this.apiService.get(`courses/enroll.json`);
+  enrollInCourse(courseId: number, userId: string | null): Observable<any> {
+    return this.apiService.post('courses/enroll', { courseId, userId });
   }
-  getProgress(courseId: number): Observable<any> {
-    return this.apiService.get('courses/progress.json');
+  isEnrolled(courseId: number, userId: string | null): Observable<any> {
+    return this.apiService.post('courses/isEnrolled', { courseId, userId });
+  }
+  getProgress(courseId: any, userId: string | null): Observable<any> {
+    return this.apiService.post(`courses/progress`, { courseId, userId });
   }
 }

@@ -27,8 +27,13 @@
       <h5 class="card-title">Difficulty Level</h5>
       <p class="card-text">{{ course?.difficulty }}</p>
 
-      <button class="btn btn-success me-2" (click)="enroll()">
-        Enroll in this Course
+      <button
+        class="btn me-2"
+        [ngClass]="course?.isEnrolled ? 'btn-secondary' : 'btn-success'"
+        (click)="enroll()"
+       
+      >
+        {{ course?.isEnrolled ? "You are Enrolled" : "Enroll in this Course" }}
       </button>
     </div>
   </div>

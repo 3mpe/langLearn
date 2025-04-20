@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
   credentials = {
+    userName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -26,7 +28,9 @@ export class RegisterComponent {
 
     this.authService.register(this.credentials).subscribe((response) => {
       if (response.success) {
-        this.router.navigate(['/auth/home']);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.user.id);
+        this.router.navigate(['/courses']);
       } else {
         this.registerError = 'Registration failed. Please try again.';
       }

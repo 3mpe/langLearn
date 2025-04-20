@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  credentials = { email: 'vatanseveremre90@gmail.com', password: '123456' };
+  credentials = { email: 'vatanseveremre90@gmail.com', password: 'Emre123' };
   loginError: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -20,6 +20,7 @@ export class LoginComponent {
         this.loginError = null;
         if (response.success) {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('userId', response.user.id);
           this.router.navigate(['/courses']);
         } else {
           this.loginError = 'Invalid credentials';
