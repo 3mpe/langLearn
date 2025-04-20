@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,17 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
   @Input() breadcrumbs: { label: string; url: string }[] = [];
   @Input() showBackButton: boolean = false;
+  @Input() showLogoutButton: boolean = false;
 
-  constructor(private location: Location) {}
+  constructor(private location: Location, private router: Router) {}
 
   goBack() {
     this.location.back();
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    this.router.navigate(['/auth/login']);
   }
 }
