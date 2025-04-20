@@ -16,15 +16,20 @@ export class LoginComponent {
   login() {
     this.authService
       .login(this.credentials.email, this.credentials.password)
-      .subscribe((response) => {
-        this.loginError = null;
-        if (response.success) {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.user.id);
-          this.router.navigate(['/courses']);
-        } else {
-          this.loginError = 'Invalid credentials';
+      .subscribe(
+        (response) => {
+          this.loginError = null;
+          if (response.success) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('userId', response.user.id);
+            this.router.navigate(['/courses']);
+          } else {
+            this.loginError = 'Invalid credentials';
+          }
+        },
+        (error) => {
+          this.loginError = 'Check the information and try again';
         }
-      });
+      );
   }
 }
