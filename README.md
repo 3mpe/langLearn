@@ -2,6 +2,11 @@
 
 LangLearn, dil öğrenme sürecini kolaylaştırmak için geliştirilmiş bir web uygulamasıdır. 
 
+## Proje Linkleri
+Frontend: https://github.com/3mpe/langLearn
+Backend: https://github.com/3mpe/LangLearnWebService
+
+
 ## Proje Yapısı
 
 Proje, aşağıdaki ana bölümlerden oluşmaktadır:
