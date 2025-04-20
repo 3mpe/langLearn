@@ -1,59 +1,50 @@
 # LangLearn
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+LangLearn, dil öğrenme sürecini kolaylaştırmak için geliştirilmiş bir web uygulamasıdır. 
 
-## Development server
+## Proje Yapısı
 
-To start a local development server, run:
+Proje, aşağıdaki ana bölümlerden oluşmaktadır:
 
-```bash
-ng serve
-```
+- **Backend**: API'leri sağlayan ve veritabanı işlemlerini yöneten bir .Net Core uygulaması.
+- **Frontend**: Kullanıcı arayüzünü sağlayan bir Angular uygulaması.
+- **Veritabanı**: İlerlemeleri saklayan bir MongoDB veritabanı.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Kurulum
+### Gereksinimler
+- .NET Core SDK (8 veya üzeri)
+- Node.js (14.x veya üzeri)
+- Angular CLI (11.x veya üzeri)
+- MongoDB (4.x veya üzeri)
+  
+### Backend
+LangLearninWebAPI projesini çalıştırmak için aşağıdaki adımları izleyin:
+1. Projeyi indirin veya klonlayın.
+2. Proje dizinine gidin.
+3. `dotnet restore` komutunu çalıştırarak bağımlılıkları yükleyin.
+4. `dotnet run` komutunu çalıştırarak uygulamayı başlatın.
+5. Aşağıdaki JSON dosyalarını kullanarak veritabanını doldurun:
+   - `src/assets/courses/details.json` => swaggerda kullanılacak olan servis `/api/courses/add (http://localhost:5110/swagger/index.html)`
+   örnek json:
+    ```json
+        {
+            "title": "Advanced German",
+            "description": "Master the German language with advanced lessons.",
+            "instructor": "Alice Johnson",
+            "content": [
+                "Advanced Grammar",
+                "Literature",
+                "Fluency Practice"
+            ],
+            "duration": "5 hours",
+            "difficulty": "Advanced"
+        }
+    ```
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Frontend
+LangLearninWeb projesini çalıştırmak için aşağıdaki adımları izleyin:
+1. Projeyi indirin veya klonlayın.
+2. Proje dizinine gidin.
+3. `npm install` komutunu çalıştırarak bağımlılıkları yükleyin.
+4. `ng serve` komutunu çalıştırarak uygulamayı başlatın.
+5. Tarayıcınızda `http://localhost:4200` adresine gidin.
